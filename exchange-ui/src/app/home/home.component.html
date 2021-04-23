@@ -1,0 +1,48 @@
+
+<h2 class="login-title">Exchange</h2>
+
+<div  class="alert alert-danger">
+  <strong *ngIf="cryFrom.invalid && (cryFrom.dirty || cryFrom.touched)" >Currency from is required</strong>
+  <strong *ngIf="cryTo.invalid && (cryTo.dirty || cryTo.touched)" >Currency to is required</strong>
+  <strong *ngIf="amt.invalid && (amt.dirty || amt.touched)" >Amount not valid</strong>
+</div>
+<form [formGroup]="exchangerForm" (ngSubmit)="onSubmit()">
+   
+    <mat-form-field appearance="fill">
+        <mat-label>Currency from</mat-label>
+        
+        <mat-select formControlName="cryFrom" id="cryFrom" required>
+            <mat-option *ngFor="let cry of currencies" [value]="cry.isoCode">
+            {{cry.name}}
+          </mat-option>
+        </mat-select>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Currency to</mat-label>
+        <mat-select formControlName="cryTo" id="cryTo" required>
+          <mat-option *ngFor="let cry of currencies" [value]="cry.isoCode">
+            {{cry.name}}
+          </mat-option>
+        </mat-select>
+      
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label >Amount</mat-label>
+        <input matInput formControlName="amt" type="number" class="right-align" id="amount" name="amount" [value]="amt" required />
+        
+    </mat-form-field>
+
+    <div class="submit-button-container">
+        <button mat-raised-button [disabled]="exchangerForm.invalid" color="primary" type="submit" class="btn-primary">Exchange</button>
+    </div>
+</form>
+
+<div [hidden]="exchange.result<=0">
+  <h1>
+    Result {{exchange.result}}
+  </h1>
+
+</div>

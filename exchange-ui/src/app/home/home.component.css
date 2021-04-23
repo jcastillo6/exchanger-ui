@@ -1,0 +1,25 @@
+.mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  .login-title{
+    display: flex;
+    justify-content: center;
+
+  }
+  .submit-button-container {
+    display: flex;
+    justify-content: center;
+    
+  }
+
+  input.right-align::-webkit-outer-spin-button,
+input.right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+.right-align {
+  -moz-appearance: textfield;
+}
+.right-align {
+    text-align: right;
+  }
